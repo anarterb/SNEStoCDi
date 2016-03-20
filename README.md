@@ -64,7 +64,7 @@ Thanks
 
 Thank you very much for reading my bad english (I'm french), I really hope SNEStoCDi will help you to use your CDi without spending insane money on an original CDi gamepad. If you build your SNEStoCDi, please let me know on my email, I would be very happy to know my work has been useful :)
 
-Special thanks to Damon Dransfeld who created the great SNESpaduino library and realesed it under CC3.0 , and to Paul Hackmann who provided some very useful documentation about the CDi devices and communication protocol.
+Special thanks to Damon Dransfeld who created the great SNESpaduino library (CC3.0) , and to Paul Hackmann who provided some very useful documentation about the CDi devices and communication protocol.
 
 bye !
 Laurent Berta / laurent.berta@lblabs.org
