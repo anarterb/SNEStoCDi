@@ -10,7 +10,9 @@ How to make your own SNEStoCDi adapter
 --------------------------------------
 
 First of all, you need the Arduino IDE. If you need to, you can download it for free here : https://www.arduino.cc/en/Main/Software
+
 You also need an Arduino, of course. I myself use Arduinos UNO and Nano but SNEStoCDi should work with most Arduino versions.
+
 To do a good and durable adapter, you will need a SNES/SFC gamepad connector (I recycle an extension cable) and a mini-DIN 8 pin male connector.
 
 Do the wiring :
