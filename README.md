@@ -1,5 +1,5 @@
-SNEStoCDi - Laurent Berta 2016 - laurent.berta@lblabs.org
----------------------------------------------------------
+SNEStoCDi
+---------
 
 SNEStoCDi is an Arduino-based project that allows to use a Nintendo SNES/SFC gamepad on a Philips CDi player / game console. SNEStoCDi requires no more electronic than the Arduino itself. It's a pretty easy project for anyone with basic knowledge about Arduino and soldering.
 
