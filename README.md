@@ -16,6 +16,7 @@ To do a good and durable adapter, you will need a SNES/SFC gamepad connector (I 
 Do the wiring :
 - Connect the SNES/SFC connector to your Arduino : please report to wiring.jpg for more informations.
 - Connect the min-DIN CDi connector to your Arduino : please report to wiring.jpg for more informations.
+
 IMPORTANT : 
 - the RTS line from the CDi *must* be connected to an analog input. if you're curious about that, report to the Tech Stuff part.
 - the Arduino will be powered by the VCC provided by the CDi. do not connect any power source to the Arduino !
