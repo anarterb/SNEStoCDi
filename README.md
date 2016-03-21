@@ -25,7 +25,7 @@ IMPORTANT :
 
 Upload the SNEStoCDi software to your Arduino :
 - connect the Arduino to your computer
-- add the SNESpad library (by Rob Duarte) to the Arduino IDE.
+- add the SNESpaduino library (by Damon Dransfeld) to the Arduino IDE.
 - open the SNEStoCDi sketch.
 - check that the Arduino pins on the sketch match your wiring, if not adjust the sketch with the right pins.
   the sketch matches the pinout showed on the wiring.jpg file.
@@ -66,7 +66,7 @@ Thanks
 
 Thank you very much for reading my bad english (I'm french), I really hope SNEStoCDi will help you to use your CDi without spending insane money on an original CDi gamepad. If you build your SNEStoCDi, please let me know on my email, I would be very happy to know my work has been useful :)
 
-Special thanks to Rob Duarte who created the great SNESpad library, and to Paul Hackmann who provided some very useful documentation about the CDi devices and communication protocol.
+Special thanks to Damon Dransfeld who created the great SNESpaduino library (CC3.0) , and to Paul Hackmann who provided some very useful documentation about the CDi devices and communication protocol.
 
 bye !
 Laurent Berta / laurent.berta@lblabs.org
