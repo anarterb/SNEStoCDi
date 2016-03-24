@@ -24,8 +24,8 @@ IMPORTANT :
 - the Arduino will be powered by the VCC provided by the CDi. do not connect any power source to the Arduino !
 
 Upload the SNEStoCDi software to your Arduino :
-- connect the Arduino to your computer
-- add the SNESpaduino library (by Damon Dransfeld) to the Arduino IDE.
+- connect the Arduino to your computer.
+- add the SNESpaduino library (by Damon Dransfeld) to the Arduino IDE. for information on installing libraries, see : http://arduino.cc/en/Guide/Libraries
 - open the SNEStoCDi sketch.
 - check that the Arduino pins on the sketch match your wiring, if not adjust the sketch with the right pins.
   the sketch matches the pinout showed on the wiring.jpg file.
