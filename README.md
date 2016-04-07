@@ -31,7 +31,7 @@ Upload the SNEStoCDi software to your Arduino :
   the sketch matches the pinout showed on the wiring.jpg file.
 - upload the compiled sketch to your Arduino
 
-That's it, you already finished :) the SNEStoCDi adapter is plug-and-play : just plug it to your CDi, plug your SNES pad, start your CDi and go suffer on some terrible games ... :)
+That's it, you already finished :) the SNEStoCDi adapter is plug-and-play : just plug it to your CDi, plug your SNES/SFC pad, start your CDi and go suffer on some terrible games ... :)
 I'd be happy to know about your build, so don't hesistate to send me an email to let me know you made your own SNEStoCDi adapter.
 
 SNEStoCDi has been tested successfully with Arduinos UNO and Nano, on a Philips CDi 470.
@@ -46,7 +46,7 @@ The buttons mapping is probably exactly what you expect :
 - the "B" button acts as "Button 2".
 - the "A" and "X" buttons both act as "Button 3", which is in fact "Button 1 + Button 2".
 
-The SNES provides way more buttons than a CDi gamepad, so I had the opportunity to add some fancy stuff :
+The SNES/SFC provides way more buttons than a CDi gamepad, so I had the opportunity to add some fancy stuff :
 - the cursor speed is adjustable in 5 steps. the "L" trigger shifts one step down, the "R" trigger shifts one step up.
 - the "start" button resets the speed to the default one (step 3).
 - the speed setting is saved into the Arduino's EEPROM, so SNEStoCDi will apply your last speed setting the next time you will use it.
