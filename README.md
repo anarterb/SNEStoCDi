@@ -29,7 +29,7 @@ Upload the SNEStoCDi software to your Arduino :
 - open the SNEStoCDi sketch.
 - check that the Arduino pins on the sketch match your wiring, if not adjust the sketch with the right pins.
   the sketch matches the pinout showed on the wiring.jpg file.
-- upload the compiled sketch to your Arduino
+- upload the compiled sketch to your Arduino.
 
 That's it, you already finished :) the SNEStoCDi adapter is plug-and-play : just plug it to your CDi, plug your SNES/SFC pad, start your CDi and go suffer on some terrible games ... :)
 I'd be happy to know about your build, so don't hesistate to send me an email to let me know you made your own SNEStoCDi adapter.
