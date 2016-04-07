@@ -13,7 +13,7 @@ First of all, you need the Arduino IDE. If you need to, you can download it for 
 
 You also need an Arduino, of course. I myself use Arduinos UNO and Nano but SNEStoCDi should work with most 5v Arduino versions.
 
-To do a good and durable adapter, you will need a SNES/SFC gamepad connector (I recycle an extension cable) and a mini-DIN 8 pin male connector.
+To do a good and durable adapter, you will need a SNES/SFC gamepad connector (a simple way is to recycle an extension cable) and a mini-DIN 8 pin male connector.
 
 Do the wiring :
 - Connect the SNES/SFC connector to your Arduino : please report to wiring.jpg for more informations.
@@ -21,11 +21,11 @@ Do the wiring :
 
 IMPORTANT : 
 - the RTS line from the CDi *must* be connected to an analog input. if you're curious about that, report to the Tech Stuff part.
-- the Arduino will be powered by the VCC provided by the CDi. do not connect any power source to the Arduino !
+- the Arduino will be powered by the VCC provided by the CDi. do not connect any other power source to the Arduino !
 
 Upload the SNEStoCDi software to your Arduino :
 - connect the Arduino to your computer.
-- add the SNESpaduino library (by Damon Dransfeld) to the Arduino IDE. for information on installing libraries, see : http://arduino.cc/en/Guide/Libraries
+- add the SNESpad library (by Rob Duarte) to the Arduino IDE. the library provided with SNEStoCDi is a modified version of SNESpad, optimized for performances and better compatibility with the current Arduino IDE. for information on installing libraries, see : http://arduino.cc/en/Guide/Libraries
 - open the SNEStoCDi sketch.
 - check that the Arduino pins on the sketch match your wiring, if not adjust the sketch with the right pins.
   the sketch matches the pinout showed on the wiring.jpg file.
@@ -66,7 +66,7 @@ Thanks
 
 Thank you very much for reading my bad english (I'm french), I really hope SNEStoCDi will help you to use your CDi without spending insane money on an original CDi gamepad. If you build your SNEStoCDi, please let me know on my email, I would be very happy to know my work has been useful :)
 
-Special thanks to Damon Dransfeld who created the great SNESpaduino library (CC3.0) , and to Paul Hackmann who provided some very useful documentation about the CDi devices and communication protocol.
+Special thanks to Rob Duarte who created the great SNESpad library, and to Paul Hackmann who provided some very useful documentation about the CDi devices and communication protocol.
 
 bye !
-Laurent Berta / laurent.berta@lblabs.org
+Laurent Berta / terbac_@hotmail.com
