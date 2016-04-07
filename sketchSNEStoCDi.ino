@@ -1,13 +1,13 @@
 
 /*******************************
  *
- *	File: sketchSNEStoCDi.ino
- *	Description: software for the SNEStoCDi gamepad converter (allows to use a Nintendo SNES/SFC gamepad on a Philips CDi)
- *	Author: Laurent Berta
+ *  File: sketchSNEStoCDi.ino
+ *  Description: software for the SNEStoCDi gamepad converter (allows to use a Nintendo SNES/SFC gamepad on a Philips CDi)
+ *  Author: Laurent Berta
  *  Date: 03-21-2016
  *  Version: 0.2
  *  Thanks: Rob Duarte (SNESpad library), Paul Hackmann (documentation about the CDi pointing devices)
- *	License: CC-BY 4.0 ( http://creativecommons.org/licenses/by/4.0/legalcode )
+ *  License: CC-BY 4.0 ( http://creativecommons.org/licenses/by/4.0/legalcode )
  *
  ******************************/
 
