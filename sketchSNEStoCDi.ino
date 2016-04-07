@@ -4,31 +4,29 @@
  *	File: sketchSNEStoCDi.ino
  *	Description: software for the SNEStoCDi gamepad converter (allows to use a Nintendo SNES/SFC gamepad on a Philips CDi)
  *	Author: Laurent Berta
- *  Date: 03-19-2016
- *  Version: 0.1
- *  Thanks: Damon Dransfeld (SNESpaduino library), Paul Hackmann (documentation about the CDi pointing devices)
- *	Web: ********
- *	License: CC-BY-SA 3.0 ( http://creativecommons.org/licenses/by-sa/3.0/legalcode )
+ *  Date: 03-21-2016
+ *  Version: 0.2
+ *  Thanks: Rob Duarte (SNESpad library), Paul Hackmann (documentation about the CDi pointing devices)
+ *	License: CC-BY 4.0 ( http://creativecommons.org/licenses/by/4.0/legalcode )
  *
  ******************************/
 
 #include <SoftwareSerial.h>
-#include <SNESpaduino.h>
+#include <SNESpad.h>
 #include <EEPROM.h>
 
-SNESpaduino pad(5, 6, 7); // Create a SNESpaduino instance, change the parameters (pin values) to your needs! (latch, clock, data)
+SNESpad pad = SNESpad(5, 6, 7); // Create a SNESpad instance, change the pin values to match your wiring (latch, clock, data)
 SoftwareSerial vSerial(9, 10, true); // RX, TX, inverse_logic. RX is not used here, as the CDi only communicates on the RTS line
 const int RTSpin = 5; // the number of the analog pin used to receive the RTS signal from the CDi
 const int ledPin = 13; // the number of the inboard LED pin
 
 const int RTSthreshold = 328; // threshold for the CDi RTS analog detection
 uint16_t btns;
-int padbyte0, padbyte1, padbyte2, oldpadbyte0, oldpadbyte1, oldpadbyte2;
-int x, y;
+bool btnRpressed = false;
+int padbyte0, padbyte1, padbyte2, oldpadbyte0, oldpadbyte1, oldpadbyte2, x, y;
 byte spd;
 bool firstId = true;
 bool btnLpressed = false;
-bool btnRpressed = false;
 bool btnSEpressed = false;
 bool standardMapping = true;
 
@@ -61,20 +59,20 @@ void loop()
   digitalWrite(ledPin, LOW);
 
 	// Get the state of the SNES pad buttons
-	btns = pad.getButtons();
+	btns = pad.buttons();
 
   // manage speed control
-  if(btns & BTN_R) {
+  if(btns & SNES_R) {
     if(!btnRpressed) changeSpeed(spd+1); // speed : up
     btnRpressed = true;
   }
   else btnRpressed = false;
-  if(btns & BTN_L) {
+  if(btns & SNES_L) {
     if(!btnLpressed) changeSpeed(spd-1); // speed : down
     btnLpressed = true;
   }
   else btnLpressed = false;
-  if(btns & BTN_START) changeSpeed(3); // speed : default (3)
+  if(btns & SNES_START) changeSpeed(3); // speed : default (3)
 
   padbyte0 = 0b11000000;  //initialize data bytes
   padbyte1 = 0b10000000;
@@ -82,8 +80,8 @@ void loop()
 
   // Dpad X axis
   x = 127;
-  if(btns & BTN_LEFT) x = 254;
-  if(btns & BTN_RIGHT) x = 1;
+  if(btns & SNES_LEFT) x = 254;
+  if(btns & SNES_RIGHT) x = 1;
   x = adjustSpeed(x);
   
   if(x<127) // right
@@ -109,8 +107,8 @@ void loop()
 
   // Dpad Y axis
   y = 127;
-  if(btns & BTN_UP) y = 254;
-  if(btns & BTN_DOWN) y = 1;
+  if(btns & SNES_UP) y = 254;
+  if(btns & SNES_DOWN) y = 1;
   y = adjustSpeed(y);
 
   if(y<127) // down
@@ -135,29 +133,29 @@ void loop()
   }
 
   // buttons
-  if(btns & BTN_SELECT) {
+  if(btns & SNES_SELECT) {
     if(!btnSEpressed) standardMapping = !standardMapping; // mapping change : invert buttons 1 & 2 (Y & B)
     btnSEpressed = true;
   }
   else btnSEpressed = false;
   if(standardMapping) {
-    if(btns & BTN_Y) padbyte0 = padbyte0 | 0b00100000;  //button 1 on (Y)
-    if(btns & BTN_B) padbyte0 = padbyte0 | 0b00010000;  //button 2 on (B)
+    if(btns & SNES_Y) padbyte0 = padbyte0 | 0b00100000;  //button 1 (Y)
+    if(btns & SNES_B) padbyte0 = padbyte0 | 0b00010000;  //button 2 (B)
   }
   else {
-    if(btns & BTN_B) padbyte0 = padbyte0 | 0b00100000;  //button 1 on (B)
-    if(btns & BTN_Y) padbyte0 = padbyte0 | 0b00010000;  //button 2 on (Y)
+    if(btns & SNES_B) padbyte0 = padbyte0 | 0b00100000;  //button 1 (B)
+    if(btns & SNES_Y) padbyte0 = padbyte0 | 0b00010000;  //button 2 (Y)
   }
-  if((btns & BTN_X) || (btns & BTN_A)) padbyte0 = padbyte0 | 0b00110000; // button 3 on (A or X)
+  if((btns & SNES_X) || (btns & SNES_A)) padbyte0 = padbyte0 | 0b00110000; // button 3 (A or X)
 
-  if((padbyte0 != oldpadbyte0) || (padbyte1 != 0b10000000) || (padbyte2 != 0b10000000) || ((padbyte0 & 0b00001111) != 0))  //see if button states have changed
+  if((padbyte0 != oldpadbyte0) || (padbyte1 != 0b10000000) || (padbyte2 != 0b10000000) || ((padbyte0 & 0b00001111) != 0))  // see if state has changed
   {     
     if(assertRTS()) vSerial.write(padbyte0);
     if(assertRTS()) vSerial.write(padbyte1);
     if(assertRTS()) vSerial.write(padbyte2);
   }
 
-  //save state
+  // save state
   oldpadbyte0 = padbyte0; 
   oldpadbyte1 = padbyte1;
   oldpadbyte2 = padbyte2;
